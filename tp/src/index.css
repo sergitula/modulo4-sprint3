@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme {
+  --color-base: var(--base);
+  --color-surface: var(--surface);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-text-main: var(--text-main);
+  --color-text-muted: var(--text-muted);
+  --color-danger: var(--danger);
+  
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+/* Tema Claro  */
+:root {
+  --base: #f8fafc;
+  --surface: #ffffff;
+  --primary: #7c3aed;
+  --primary-hover: #6d28d9;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --danger: #e11d48;
+}
+
+/* Tema Oscuro */
+.dark {
+  --base: #090a0f;
+  --surface: #1a1e2e;
+  --primary: #8b5cf6;
+  --primary-hover: #a855f7;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --danger: #f43f5e;
+}
+
+/* Estilos base para que aplique al fondo y texto general */
+body {
+  background-color: var(--base);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

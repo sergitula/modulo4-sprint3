@@ -1,0 +1,22 @@
+export const juegos = [
+  { id: 1, titulo: "Hollow Knight", genero: "Metroidvania", anio: 2017, puntaje: 90, precio: 14.99, enOferta: true },
+  { id: 2, titulo: "Elden Ring", genero: "RPG de Acción", anio: 2022, puntaje: 96, precio: 59.99, enOferta: false },
+  { id: 3, titulo: "The Legend of Zelda: Tears of the Kingdom", genero: "Aventura", anio: 2023, puntaje: 96, precio: 69.99, enOferta: false },
+  { id: 4, titulo: "Hades", genero: "Roguelite", anio: 2020, puntaje: 93, precio: 24.99, enOferta: true },
+  { id: 5, titulo: "Cyberpunk 2077", genero: "RPG", anio: 2020, puntaje: 86, precio: 59.99, enOferta: true },
+  { id: 6, titulo: "Stardew Valley", genero: "Simulación", anio: 2016, puntaje: 89, precio: 14.99, enOferta: false },
+  { id: 7, titulo: "Red Dead Redemption 2", genero: "Mundo Abierto", anio: 2018, puntaje: 97, precio: 59.99, enOferta: true },
+  { id: 8, titulo: "Baldur's Gate 3", genero: "CRPG", anio: 2023, puntaje: 96, precio: 59.99, enOferta: false },
+  { id: 9, titulo: "God of War Ragnarök", genero: "Acción", anio: 2022, puntaje: 94, precio: 69.99, enOferta: false },
+  { id: 10, titulo: "Celeste", genero: "Plataformas", anio: 2018, puntaje: 92, precio: 19.99, enOferta: true },
+  { id: 11, titulo: "Disco Elysium", genero: "RPG", anio: 2019, puntaje: 97, precio: 39.99, enOferta: true },
+  { id: 12, titulo: "Resident Evil 4 Remake", genero: "Survival Horror", anio: 2023, puntaje: 93, precio: 59.99, enOferta: false },
+  { id: 13, titulo: "Sekiro: Shadows Die Twice", genero: "Acción", anio: 2019, puntaje: 90, precio: 59.99, enOferta: true },
+  { id: 14, titulo: "Super Mario Odyssey", genero: "Plataformas", anio: 2017, puntaje: 97, precio: 59.99, enOferta: false },
+  { id: 15, titulo: "The Witcher 3: Wild Hunt", genero: "RPG de Acción", anio: 2015, puntaje: 93, precio: 39.99, enOferta: true },
+  { id: 16, titulo: "Portal 2", genero: "Puzles", anio: 2011, puntaje: 95, precio: 9.99, enOferta: true },
+  { id: 17, titulo: "Persona 5 Royal", genero: "JRPG", anio: 2019, puntaje: 95, precio: 59.99, enOferta: false },
+  { id: 18, titulo: "Outer Wilds", genero: "Exploración", anio: 2019, puntaje: 85, precio: 24.99, enOferta: false },
+  { id: 19, titulo: "Doom Eternal", genero: "Disparos (FPS)", anio: 2020, puntaje: 88, precio: 39.99, enOferta: true },
+  { id: 20, titulo: "Slay the Spire", genero: "Cartas", anio: 2019, puntaje: 89, precio: 24.99, enOferta: false }
+];
