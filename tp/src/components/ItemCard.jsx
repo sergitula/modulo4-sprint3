@@ -1,4 +1,5 @@
 import logoJuego from '../assets/juego.png'
+import {formatearPrecio} from '../utils/formato'
 
 const ItemCard = ({ juego, enMiLista, toggleJuego }) => {
   return (
@@ -46,7 +47,7 @@ const ItemCard = ({ juego, enMiLista, toggleJuego }) => {
         {/* Precio */}
         <div className="mt-auto pt-3 flex items-center justify-between gap-2">
           <span className="text-text-main font-bold text-lg">
-            ${juego.precio.toFixed(2)}
+            {formatearPrecio(juego.precio)}
           </span>
 
           {/* Botón agregar / en lista */}

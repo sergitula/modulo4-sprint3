@@ -1,4 +1,5 @@
 import logoJuego from '../assets/juego.png'
+import {formatearPrecio} from '../utils/formato'
 
 const ListPanel = ({ miListaDeJuegos, onClose, quitarJuego, vaciarLista }) => {
   const subtotal = miListaDeJuegos.reduce((acc, j) => acc + j.precio, 0)
@@ -82,7 +83,7 @@ const ListPanel = ({ miListaDeJuegos, onClose, quitarJuego, vaciarLista }) => {
                       {juego.genero}
                     </p>
                     <p className="text-primary font-bold text-sm mt-0.5">
-                      ${juego.precio.toFixed(2)}
+                      {formatearPrecio(juego.precio)}
                     </p>
                   </div>
 
@@ -110,11 +111,6 @@ const ListPanel = ({ miListaDeJuegos, onClose, quitarJuego, vaciarLista }) => {
                 ${subtotal.toFixed(2)}
               </span>
             </div>
-
-            {/* Botón proceder */}
-            {/* <button className="w-full bg-primary hover:bg-primary-hover text-white font-semibold text-sm py-2.5 rounded-xl transition-colors cursor-pointer">
-              🛒 Proceder a tiendas asociadas
-            </button> */}
 
             {/* Botón vaciar */}
             <button
