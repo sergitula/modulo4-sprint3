@@ -1,8 +1,9 @@
 import logoJuego from '../assets/juego.png'
 import {formatearPrecio} from '../utils/formato'
+import { useCarritoContext } from '../context/CarritoContext';
 
-const ListPanel = ({ miListaDeJuegos, onClose, quitarJuego, vaciarLista }) => {
-  const subtotal = miListaDeJuegos.reduce((acc, j) => acc + j.precio, 0)
+const ListPanel = ({ onClose }) => {
+  const { carrito, total, cantidadTotal, quitarDelCarrito, vaciarCarrito, cambiarCantidad } = useCarritoContext();
 
   return (
     <>
@@ -27,9 +28,9 @@ const ListPanel = ({ miListaDeJuegos, onClose, quitarJuego, vaciarLista }) => {
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse" />
             <h2 className="text-text-main font-bold text-base">Mi Lista</h2>
-            {miListaDeJuegos.length > 0 && (
+            {cantidadTotal > 0 && (
               <span className="bg-primary/20 text-primary text-xs font-bold px-2 py-0.5 rounded-full">
-                {miListaDeJuegos.length} {miListaDeJuegos.length === 1 ? 'título' : 'títulos'}
+                {cantidadTotal} {cantidadTotal === 1 ? 'título' : 'títulos'}
               </span>
             )}
           </div>
@@ -44,13 +45,13 @@ const ListPanel = ({ miListaDeJuegos, onClose, quitarJuego, vaciarLista }) => {
 
         {/* Contenido scrolleable */}
         <div className="flex-1 overflow-y-auto px-4 py-4">
-          {miListaDeJuegos.length === 0 ? (
+          {carrito.length === 0 ? (
             /* Estado vacío */
             <div className="flex flex-col items-center justify-center h-full gap-4 text-center py-12">
               <span className="text-5xl">🎮</span>
-              <p className="text-text-main font-semibold">Tu lista está vacía</p>
+              <p className="text-text-main font-semibold">Tu carrito está vacío</p>
               <p className="text-text-muted text-sm max-w-xs">
-                Explorá el catálogo y agregá los títulos que quieras seguir.
+                Explorá el catálogo y agregá los títulos que quieras comprar.
               </p>
               <button
                 onClick={onClose}
@@ -62,7 +63,7 @@ const ListPanel = ({ miListaDeJuegos, onClose, quitarJuego, vaciarLista }) => {
           ) : (
             /* Lista de juegos */
             <ul className="flex flex-col gap-3">
-              {miListaDeJuegos.map((juego) => (
+              {carrito.map((juego) => (
                 <li
                   key={juego.id}
                   className="flex items-center gap-3 bg-base rounded-xl p-3 border border-white/5"
@@ -85,11 +86,30 @@ const ListPanel = ({ miListaDeJuegos, onClose, quitarJuego, vaciarLista }) => {
                     <p className="text-primary font-bold text-sm mt-0.5">
                       {formatearPrecio(juego.precio)}
                     </p>
+                    {/* Agregado de controles + y - */}
+                    <div className="flex items-center gap-3 mt-2">
+                      <div className="flex items-center bg-black/20 rounded-lg border border-white/10">
+                        <button
+                          onClick={() => cambiarCantidad(juego.id, -1)}
+                          className="px-2.5 py-1 text-text-muted hover:text-white transition-colors"
+                        > - </button>
+                        <span className="text-xs font-bold w-4 text-center">
+                          {juego.cantidad}
+                        </span>
+                        <button
+                          onClick={() => cambiarCantidad(juego.id, 1)}
+                          disabled={juego.cantidad >= juego.stock}
+                          className="px-2.5 py-1 text-text-muted hover:text-white transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                        > + </button>
+                      </div>
+                    </div>
+
                   </div>
+
 
                   {/* Botón quitar */}
                   <button
-                    onClick={() => quitarJuego(juego)}
+                    onClick={() => quitarDelCarrito(juego.id)}
                     className="text-text-muted hover:text-danger transition-colors shrink-0 text-lg leading-none cursor-pointer"
                     aria-label={`Quitar ${juego.titulo}`}
                   >
@@ -101,20 +121,20 @@ const ListPanel = ({ miListaDeJuegos, onClose, quitarJuego, vaciarLista }) => {
           )}
         </div>
 
-        {/* Footer del panel — solo visible si hay items */}
-        {miListaDeJuegos.length > 0 && (
+        {/* Footer del panel — visible si hay items */}
+        {carrito.length > 0 && (
           <div className="shrink-0 border-t border-white/10 px-5 py-4 flex flex-col gap-3">
             {/* Subtotal */}
             <div className="flex items-center justify-between">
               <span className="text-text-muted text-sm">Subtotal en carrito:</span>
               <span className="text-text-main font-bold text-lg">
-                ${subtotal.toFixed(2)}
+                {formatearPrecio(total)}
               </span>
             </div>
 
             {/* Botón vaciar */}
             <button
-              onClick={vaciarLista}
+              onClick={vaciarCarrito}
               className="w-full text-danger hover:bg-danger/10 text-sm font-medium py-2 rounded-xl transition-colors border border-danger/30 cursor-pointer"
             >
               🗑 Vaciar mi lista

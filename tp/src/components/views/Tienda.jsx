@@ -4,11 +4,11 @@ import SearchBar from "../../components/SearchBar";
 import { ItemList } from "../../components/ItemList";
 
 
-export const Tienda = ({ miListaDeJuegos, toggleJuego }) => {
+export const Tienda = () => {
     // Búsqueda
     const [busqueda, setBusqueda] = useState("");
     const juegosFiltrados = juegos.filter((juego) =>
-    juego.titulo.toLowerCase().includes(busqueda.trim().toLowerCase()),
+        juego.titulo.toLowerCase().includes(busqueda.trim().toLowerCase()),
     );
 
     return (
@@ -18,8 +18,6 @@ export const Tienda = ({ miListaDeJuegos, toggleJuego }) => {
                 <SearchBar busqueda={busqueda} setBusqueda={setBusqueda} />
                 <ItemList
                 juegos={juegosFiltrados}
-                miListaDeJuegos={miListaDeJuegos}
-                toggleJuego={toggleJuego}
                 busqueda={busqueda}
                 />
             </div>

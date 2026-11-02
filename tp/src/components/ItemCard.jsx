@@ -1,7 +1,12 @@
 import logoJuego from '../assets/juego.png'
 import {formatearPrecio} from '../utils/formato'
+import { useCarritoContext } from '../context/CarritoContext';
 
-const ItemCard = ({ juego, enMiLista, toggleJuego }) => {
+const ItemCard = ({ juego }) => {
+
+  const { agregarAlCarrito, estaEnElCarrito } = useCarritoContext();
+  const enElCarrito = estaEnElCarrito(juego.id);
+
   return (
     <article className="
       relative flex flex-col
@@ -50,18 +55,18 @@ const ItemCard = ({ juego, enMiLista, toggleJuego }) => {
             {formatearPrecio(juego.precio)}
           </span>
 
-          {/* Botón agregar / en lista */}
+          {/* Botón agregar*/}
           <button
-            onClick={() => toggleJuego(juego)}
+            onClick={() => agregarAlCarrito(juego)}
             className={`
               flex items-center gap-1.5 text-sm font-semibold px-4 py-1.5 rounded-full transition-all cursor-pointer
-              ${enMiLista
+              ${enElCarrito
                 ? 'bg-primary/20 text-primary border border-primary/50 hover:bg-danger/20 hover:text-danger hover:border-danger/50'
                 : 'bg-primary hover:bg-primary-hover text-white'
               }
             `}
           >
-            {enMiLista ? (
+            {enElCarrito ? (
               <>✓ <span>En mi lista</span></>
             ) : (
               <>+ <span>Agregar</span></>

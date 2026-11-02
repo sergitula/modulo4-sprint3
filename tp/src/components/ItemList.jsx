@@ -1,6 +1,6 @@
 import ItemCard from './ItemCard'
 
-export const ItemList = ({ juegos, miListaDeJuegos, toggleJuego, busqueda }) => {
+export const ItemList = ({ juegos, busqueda }) => {
 
   // Estado vacío: sin resultados de búsqueda
   if (juegos.length === 0) {
@@ -43,13 +43,10 @@ export const ItemList = ({ juegos, miListaDeJuegos, toggleJuego, busqueda }) => 
           xl:grid-cols-4
         ">
           {juegos.map((juego) => {
-            const estaEnLista = miListaDeJuegos.some((item) => item.id === juego.id)
             return (
               <ItemCard
                 key={juego.id}
                 juego={juego}
-                enMiLista={estaEnLista}
-                toggleJuego={toggleJuego}
               />
             )
           })}

@@ -1,6 +1,9 @@
+import { useCarritoContext } from "../../context/CarritoContext"
 import ThemeSwitcher from "../ThemeSwitcher"
 
-export const Navbar = ({ onAbrirPanel, cantidadItems }) => {
+export const Navbar = ({ onAbrirPanel }) => {
+  const {cantidadTotal} = useCarritoContext();
+
   return (
     <header className="sticky top-0 z-50 bg-surface border-b border-white/10 shadow-sm">
       <nav className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between gap-4">
@@ -38,9 +41,9 @@ export const Navbar = ({ onAbrirPanel, cantidadItems }) => {
           >
             <span>🎯</span>
             <span className="hidden sm:inline">Mi Lista</span>
-            {cantidadItems > 0 && (
+            {cantidadTotal > 0 && (
               <span className="bg-white text-primary text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full leading-none">
-                {cantidadItems}
+                {cantidadTotal}
               </span>
             )}
           </button>

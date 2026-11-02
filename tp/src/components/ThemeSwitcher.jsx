@@ -1,18 +1,9 @@
-import {useEffect } from "react"
-
 import imgModoClaro from '../assets/tema/modo-claro.png'
 import imgModoOscuro from '../assets/tema/modo-oscuro.png'
-import useLocalStorage from "../hooks/useLocalStorage"
-
-const CLAVE_TEMA = 'miWatchList:tema' 
+import { useThemeContext } from '../context/ThemeContext'
 
 const ThemeSwitcher = () => {
-
-  const [modoOscuro, setModoOscuro] = useLocalStorage(CLAVE_TEMA, false)
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', modoOscuro)
-  }, [modoOscuro])
+  const { modoOscuro, setModoOscuro } = useThemeContext()
 
   return (
     <button
