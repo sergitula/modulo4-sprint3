@@ -47,19 +47,3 @@ pnpm run dev
 ## Qué generé con IA
 
 Usé Gemini como tutor interactivo. Yo armé la estructura base, la lógica de los hooks y los contextos. Usé la IA para verificar que mi código del Bloque C cumpliera estrictamente con los 5 requisitos de la rúbrica, para refactorizar la estructura de los <label> del formulario manteniendo el diseño CSS que habíamos visto en clase, y para detectar un error de tipeo que me recargaba la página en el checkout.
-
-
-
-
-
-
-
-
-
-
-
-## Uso de IA
-
-* Herramientas que usé: Gemini (como tutor).
-* Qué hice yo y en qué me ayudó la IA: Toda la estructura, los componentes y la lógica de React la armé a mano. Usé la IA como apoyo cuando me trababa con algún error de código (como la sintaxis de los custom hooks), para asegurarme de estar cumpliendo bien algunas consignas, y para que me guíe paso a paso al subir la página a Netlify.
-
