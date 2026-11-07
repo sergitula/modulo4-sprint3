@@ -5,13 +5,15 @@ import { Footer } from "./components/layout/Footer";
 import useToggle from "./hooks/useToggle";
 
 import {Tienda}  from "./components/views/Tienda"
+import {Checkout} from "./components/views/Checkout"
+import {Confirmacion} from "./components/views/Confirmacion"
 import { VISTAS } from "./data/vistas";
 
 
 function App() {
   const [vista, setVista] = useState(VISTAS.TIENDA);
   const [isPanelOpen, togglePanel] = useToggle(false)
-
+  const [datosCompra, setDatosCompra] = useState(null);
   return (
     <div className="min-h-screen flex flex-col bg-base text-text-main">
 
@@ -22,7 +24,13 @@ function App() {
 
       {/* Contenido principal */}
       <main>
-        <Tienda />
+        {vista === VISTAS.TIENDA && <Tienda />}
+        {vista === VISTAS.CHECKOUT && (
+          <Checkout setVista={setVista} setDatosCompra={setDatosCompra} />
+        )}
+        {vista === VISTAS.CONFIRMACION && (
+          <Confirmacion setVista={setVista} datosCompra={datosCompra} />
+        )}
       </main>
 
 
@@ -30,6 +38,7 @@ function App() {
       {isPanelOpen && (
         <ListPanel
           onClose={togglePanel}
+          setVista = {setVista}
         />
       )}
 

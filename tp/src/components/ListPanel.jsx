@@ -1,9 +1,15 @@
 import logoJuego from '../assets/juego.png'
 import {formatearPrecio} from '../utils/formato'
 import { useCarritoContext } from '../context/CarritoContext';
+import { VISTAS } from '../data/vistas';
 
-const ListPanel = ({ onClose }) => {
+const ListPanel = ({ onClose, setVista}) => {
   const { carrito, total, cantidadTotal, quitarDelCarrito, vaciarCarrito, cambiarCantidad } = useCarritoContext();
+
+  const handleIrAPagar = () => {
+    setVista(VISTAS.CHECKOUT);
+    onClose();
+  };
 
   return (
     <>
@@ -131,7 +137,12 @@ const ListPanel = ({ onClose }) => {
                 {formatearPrecio(total)}
               </span>
             </div>
-
+            <button
+              onClick={handleIrAPagar}
+              className="w-full bg-primary hover:bg-primary-hover disabled:bg-primary/20 disabled:text-white/40 text-white text-sm font-bold py-3 rounded-xl transition-colors cursor-pointer disabled:cursor-not-allowed"
+            >
+              Ir a pagar
+            </button>
             {/* Botón vaciar */}
             <button
               onClick={vaciarCarrito}
@@ -139,6 +150,8 @@ const ListPanel = ({ onClose }) => {
             >
               🗑 Vaciar mi lista
             </button>
+
+
           </div>
         )}
       </aside>
